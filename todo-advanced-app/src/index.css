@@ -1,0 +1,280 @@
+/* -------------------------
+   Global Reset
+------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, Arial, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+/* -------------------------
+   Themes
+------------------------- */
+body[data-theme="light"] {
+  --bg: #f5f5f7;
+  --panel: #ffffff;
+  --border: #dcdcdc;
+  --text: #333;
+  --muted: #777;
+  --primary: #2563eb;
+  --danger: #d32f2f;
+  --shadow: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="dark"] {
+  --bg: #121212;
+  --panel: #1e1e1e;
+  --border: #333;
+  --text: #e3e3e3;
+  --muted: #aaa;
+  --primary: #3b82f6;
+  --danger: #ef4444;
+  --shadow: rgba(255, 255, 255, 0.04);
+}
+
+/* -------------------------
+   Layout
+------------------------- */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 20px 28px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px var(--shadow);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.header-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.search {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 6px;
+  width: 230px;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* -------------------------
+   Sidebar, Panels
+------------------------- */
+
+.side .panel,
+.add-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 1px 4px var(--shadow);
+  margin-bottom: 20px;
+}
+
+.panel h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Add task box */
+.add-card input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--text);
+}
+
+.add-row {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.add-row select {
+  padding: 8px;
+  border-radius: 6px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* -------------------------
+   Buttons
+------------------------- */
+.btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn.danger {
+  background: var(--danger);
+  color: white;
+}
+
+.btn.small {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* -------------------------
+   Todo List + Cards
+------------------------- */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-row {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px var(--shadow);
+}
+
+.todo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Title and main row */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.row .main {
+  flex: 1;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.title.done {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* Meta labels */
+.meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Priority colors */
+.priority.high { color: #d32f2f; }
+.priority.medium { color: #f59e0b; }
+.priority.low { color: #22c55e; }
+
+/* Labels */
+.label {
+  padding: 2px 6px;
+  background: var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Overdue */
+.overdue {
+  margin-left: 10px;
+  color: var(--danger);
+  font-size: 12px;
+}
+
+/* -------------------------
+   Subtasks
+------------------------- */
+.sub {
+  padding-left: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sub-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sub-row span.done {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.sub-input {
+  padding: 8px;
+  margin-left: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+}
+
+/* -------------------------
+   Responsive
+------------------------- */
+@media (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    order: 2;
+  }
+
+  .content {
+    order: 1;
+  }
+}
